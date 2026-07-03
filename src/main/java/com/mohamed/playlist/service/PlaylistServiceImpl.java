@@ -43,5 +43,19 @@ public class PlaylistServiceImpl implements PlaylistService {
         return playlistRepository.findById(playlistId)
                 .orElseThrow(() -> new RuntimeException("Playlist not found"));
     }
+    @Override
+    public Playlist updatePlaylist(Long id, Playlist updatedPlaylist) {
+        Playlist existing = playlistRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Playlist not found"));
+        existing.setName(updatedPlaylist.getName());
+        return playlistRepository.save(existing);
+    }
+
+    @Override
+    public void deletePlaylist(Long id){
+        playlistRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Playlist not found"));
+        playlistRepository.deleteById(id);
+    }
 
 }

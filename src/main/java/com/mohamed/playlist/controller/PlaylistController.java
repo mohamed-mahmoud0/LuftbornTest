@@ -38,4 +38,14 @@ public class PlaylistController {
         Playlist playlist = playlistService.getPlaylistById(id);
         return ResponseEntity.ok(playlist);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Playlist> updatePlaylist(@PathVariable Long id, @RequestBody Playlist playlist) {
+        return ResponseEntity.ok(playlistService.updatePlaylist(id, playlist));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePlaylist(@PathVariable Long id) {
+        playlistService.deletePlaylist(id);
+        return ResponseEntity.noContent().build();
+    }
 }

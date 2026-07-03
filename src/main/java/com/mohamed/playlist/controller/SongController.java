@@ -28,5 +28,15 @@ public class SongController {
     public ResponseEntity<Song> getSongById(@PathVariable Long id) {
         return ResponseEntity.ok(songService.getSongById(id));
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Song> updateSong(@PathVariable Long id, @RequestBody Song song) {
+        return ResponseEntity.ok(songService.updateSong(id, song));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSong(@PathVariable Long id) {
+        songService.deleteSong(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }

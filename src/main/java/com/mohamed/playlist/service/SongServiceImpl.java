@@ -30,4 +30,19 @@ public class SongServiceImpl implements SongService {
         return songRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Song not found"));
     }
+    @Override
+    public Song updateSong(Long id, Song updatedSong) {
+        Song existing = songRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Song not found"));
+        existing.setTitle(updatedSong.getTitle());
+        existing.setArtist(updatedSong.getArtist());
+        return songRepository.save(existing);
+    }
+
+    @Override
+    public void deleteSong(Long id) {
+        songRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Song not found"));
+        songRepository.deleteById(id);
+    }
 }
