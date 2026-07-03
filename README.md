@@ -63,3 +63,6 @@ Import the endpoints into Postman and test in this order:
 
 Database Schema:
 See `documents/playlistERD.png` for the entity relationship diagram.
+
+AI Usage:
+Chat context in `documents/Claude-ChatContext.pdf`
